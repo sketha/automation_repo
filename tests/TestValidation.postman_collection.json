@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "1bbd689d-8e35-462d-93a8-e500fea1420e",
+		"name": "TestValidation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://services.groupkt.com/state/get/IND/UP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dad02f46-e6fd-4796-bf5f-2645e51dea32",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"State found matching code\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.RestResponse.result.country).to.eql(\"IND\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://services.groupkt.com/state/get/IND/UP",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"state",
+						"get",
+						"IND",
+						"UP"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
